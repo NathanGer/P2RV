@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2RV", "P2RV\P2RV.csproj", "{78AAE4A8-D7EA-4118-90A7-2BC2190D0DF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78AAE4A8-D7EA-4118-90A7-2BC2190D0DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78AAE4A8-D7EA-4118-90A7-2BC2190D0DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78AAE4A8-D7EA-4118-90A7-2BC2190D0DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78AAE4A8-D7EA-4118-90A7-2BC2190D0DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5B0AFEE-8CB6-4623-8D16-DDE430B3CF95}
+	EndGlobalSection
+EndGlobal
