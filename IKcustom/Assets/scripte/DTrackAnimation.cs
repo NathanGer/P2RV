@@ -4,19 +4,16 @@ using System.Collections.Generic;
 public class DTrackAnimation : MonoBehaviour
 {
 
-    private List<Transform> bones = new List<Transform>(); // liste des bones possédant le script DTrackPose
-    //private List<Quaternion> rotationOffsets = new List<Quaternion>(); // liste des quaternions offsets pour chaque bone
-    //private List<Vector3> positionOffsets = new List<Vector3>(); // liste des positions offsets pour chaque bone
+    private List<Transform> bones = new List<Transform>(); // liste des bones possédant le script DTrackPos
     private Transform currentChild;
     public int firstFrame = 10; // frame à laquelle on mesure les offsets
     private float eps = 0.0001f;
-    private List<Quaternion> rotationStandards = new List<Quaternion>();
-    //private List<Vector3> positionStandards = new List<Vector3>();
+    private List<Quaternion> rotationStandards = new List<Quaternion>(); //liste des decalages intials
 
     // Use this for initialization
     void Start()
     {
-       
+        //AddChildrenToList (this.gameObject.transform);
     }
 
     // Update is called once per frame
@@ -33,11 +30,12 @@ public class DTrackAnimation : MonoBehaviour
             for (int i = 0; i < bones.Count; i++)
             {
                 DTrackPose pose = bones[i].GetComponent<DTrackPose>();
-                //Quaternion orientation = pose.body_desc.orientation;
                 Vector3 position_world = pose.body_desc.position;
 
                 Quaternion quat = rotationStandards[i];
 
+                // affecte la position et l'orientation pour la hanmche,
+                // sinon suelement l'orientation
                 if (i == 0)
                  {
                     bones[i].position = position_world;
@@ -48,7 +46,8 @@ public class DTrackAnimation : MonoBehaviour
                  {
                     bones[i].transform.rotation = pose.body_desc.orientation * quat;
                 }
-                              
+
+
             }
         }
     }
@@ -70,12 +69,10 @@ public class DTrackAnimation : MonoBehaviour
             DTrackPose pose = currentChild.GetComponent<DTrackPose>();
             if (pose != null)
             {
-                
+
                 bones.Add(currentChild); // on ajoute à la table le transform de l'enfant
-               // rotationOffsets.Add(pose.body_desc.orientation); // on ajoute la première rotation envoyée par DTrack : ceci sera notre offset pour la suite
+
                 rotationStandards.Add(currentChild.rotation);
-              // positionOffsets.Add(pose.body_desc.position);
-               // positionStandards.Add(currentChild.localPosition);// vector3  local position  ce sera pas necessaire je dirais
             }
             AddChildrenToList(currentChild); // on traite les petits enfants
         }
